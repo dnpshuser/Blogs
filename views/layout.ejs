@@ -7,11 +7,16 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
 
 
-  <title>Blogs</title>
+  <title><% if (locals.user) { %>
+    <%=  locals.user.username %>
+    <% } else { %>
+    Blogs
+    <% } %> 
+  </title>
 </head>
-<body>
+<body  style="background-image: url('/images/download.png');">
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-secondary">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -19,30 +24,27 @@
         <ul class="navbar-nav">
           <% if (locals.user) { %>
             <li class="nav-item">
-              <a class="nav-link active" href="/">Home</a>
+              <a <% if(title=='Home') { %> class="nav-link active" <% } else { %> class="nav-link" <% } %> class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a <% if(title=='Blogs') { %> class="nav-link active" <% } else { %> class="nav-link" <% } %> class="nav-link" href="/add/blog">Write Blogs</a>
+            </li>
+            <li class="nav-item">
+              <a <% if(title=='Category') { %> class="nav-link active" <% } else { %> class="nav-link" <% } %> class="nav-link" href="/add/category">Add Category</a>
             </li>
           <% } else { %>
-            <% if (title=='Register') { %>
               <li class="nav-item">
-                <a class="nav-link active" href="/register">Register</a>
+                <a <% if(title=='Register') { %> class="nav-link active" <% } else { %> class="nav-link" <% } %>   href="/register">Register</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
-              </li>
-            <% } else { %>
-              <li class="nav-item">
-                <a class="nav-link" href="/register">Register</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="/login">Login</a>
+                <a <% if(title=='Login') { %> class="nav-link active" <% } else { %> class="nav-link" <% } %> class="nav-link" href="/login">Login</a>
               </li>
             <% } %> 
-          <% } %> 
         </ul>
         <% if (locals.user) { %>
-          <ul class="ml-auto">
+          <ul class="ml-auto" >
             <form action="/logout/?_method=DELETE" method="POST">
-              <button class="btn btn-outline-danger" type="submit">LogOut</button>
+              <input type="submit" class="btn btn-danger"  value="Logout">
             </form>
           </ul>
         <% } %>

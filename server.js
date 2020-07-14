@@ -9,11 +9,17 @@ const flash = require('express-flash');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const path = require('path');
+const expressEjsLayouts = require('express-ejs-layouts');
+const methodOverride = require('method-override');
+
 const indexRouter = require('./routes/index');
 const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
-const expressEjsLayouts = require('express-ejs-layouts');
-const methodOverride = require('method-override');
+const addBlogRouter = require('./routes/add/blogRouter');
+const addCategoryRouter = require('./routes/add/categoryRouter');
+
+const Blog = require('./models/blog');
+const Category = require('./models/category');
 
 const app = express();
 
@@ -37,19 +43,38 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.use("*",(req,res,next) => {
+app.use("*",async (req,res,next) => {
+  app.locals.blogs = await Blog.find();
+  app.locals.categories = await Category.find();
   if(req.isAuthenticated()) {
-    res.locals.user = req.user;
+    app.locals.user = req.user;
   } else {
-    res.locals.user = null;
+    app.locals.user = null;
   }
   next();
 })
 
+const checkAuthenticated = function(req,res,next) {
+  if(req.isAuthenticated()) {
+    return next();
+  }
+  req.flash('error', 'Please Login First.!');
+  res.redirect('/login');
+}
 
-app.use('/register', registerRouter);
-app.use('/login', loginRouter);
-app.use('/', indexRouter);
+const checkNotAuthenticated = function(req,res,next) {
+  if(req.isAuthenticated()) {
+    req.flash('info', 'Already Logged In.');
+    return res.redirect('/');
+  }
+  next();
+}
+
+app.use('/add/blog',checkAuthenticated, addBlogRouter);
+app.use('/add/category',checkAuthenticated, addCategoryRouter);
+app.use('/register',checkNotAuthenticated, registerRouter);
+app.use('/login',checkNotAuthenticated, loginRouter);
+app.use('/',checkAuthenticated, indexRouter);
 
 const port = 3000;
 app.listen(port, () => {

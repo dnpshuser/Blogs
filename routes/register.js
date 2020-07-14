@@ -15,13 +15,8 @@ mongoose.connect('mongodb://localhost/nodeblogPractice', {
   console.log('Error connecting the database...');
 })
 
-const CheckNotAuthenticated = function(req,res,next) {
-  if(req.isAuthenticated()) {
-    return res.redirect('/');
-  }
-  next();
-}
-router.get('/', CheckNotAuthenticated , (req,res) => {
+
+router.get('/',  (req,res) => {
   res.render('register',{title : 'Register'});
 })
 

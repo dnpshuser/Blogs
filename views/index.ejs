@@ -1,3 +1,22 @@
 <%- include("./successMessages") %> 
-<h2> Welcome <strong><%= locals.user.username %>  </strong> </h2>
-<h2>Now You can write your own blogs here...</h2>
+<%- include('./infoMessages') %>
+
+<div class="blog-container" >
+  <% for(blog of locals.blogs) { %>
+    <div>
+      Title : <strong><%= blog.title %></strong>
+      <br> 
+      Category : <%= blog.category %> 
+      <br>
+      <img width="100%" height="500px"  src="/images/<%=blog.image%>" alt="blog ka photo">
+      <br>
+      <%- blog.description %> 
+      <br>
+      <br>
+      Contributed by : <strong><%= blog.author %></strong> 
+      <hr>
+    </div>
+    
+  <% } %> 
+</div>
+

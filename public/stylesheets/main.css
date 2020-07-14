@@ -1,4 +1,5 @@
 body {
+  background: cadetblue;
   padding : 10px;
   margin : 2px;
 }
@@ -12,3 +13,38 @@ body {
   text-align: center;
 }
 
+
+.form-container {
+  width : 700px;
+  border : 1px solid #ccc;
+  margin : 20px auto ;
+  padding : 20px;
+  border-top : #83cd39 3px solid;
+}
+
+.blog-container {
+  width : 800px;
+  border : 1px solid blue;
+  margin : 20px auto ; 
+  padding : 70px;
+  border-top : yellowgreen 2px solid;
+}
+
+input[type="text"],textarea {
+  padding : 3px;
+  width : 50%;
+  border : 1px #ccc solid;
+}
+
+.reg-login {
+  background-image: url('/images/signin.png') ;
+  background-repeat: no-repeat;
+  background-size: contain;  
+  background-position : right;
+
+  width : 500px;
+  border : 1px solid #ccc;
+  margin : 20px auto ;
+  padding : 20px;
+  border-top : #83cd39 3px solid;
+}

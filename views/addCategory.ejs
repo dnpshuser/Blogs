@@ -1,0 +1,21 @@
+<h1>Now You can add your category here.</h1>
+<br>
+<div class="form-container">
+  <h3>Categories Available</h3>
+  <div>
+    <% for( category of locals.categories ) { %>
+        <div>
+          <%=category.name %>
+          
+        </div>
+    <% } %>
+    <hr>
+    <h3>Add Your Category</h3>
+  </div>
+    <form action="/add/category" method="POST" >
+      <label for="title">Category :</label>
+      <input type="text" name="category" id="category" class="form-control" required>
+      <br>
+      <button type="submit" class="btn btn-outline-success">Add This Category</button>
+    </form>
+</div>

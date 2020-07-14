@@ -6,13 +6,8 @@ const initializePassport = require('../passport-config');
 
 initializePassport(passport);
 
-const CheckNotAuthenticated = function(req,res,next) {
-  if(req.isAuthenticated()) {
-    return res.redirect('/');
-  }
-  next();
-}
-router.get('/', CheckNotAuthenticated ,(req,res) => {
+
+router.get('/', (req,res) => {
   res.render('login', {title : 'Login'});
 })
 
