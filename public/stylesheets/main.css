@@ -1,0 +1,14 @@
+body {
+  padding : 10px;
+  margin : 2px;
+}
+
+.form-inline {
+  padding : 10px;
+  margin : 10px;
+}
+
+.alert, .alert-danger {
+  text-align: center;
+}
+
