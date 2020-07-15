@@ -10,13 +10,15 @@
       <br>
       <img width="100%" height="500px"  src="/images/<%=blog.image%>" alt="blog ka photo">
       <br>
-      <%- blog.description %> 
+      <%- locals.truncateText(blog.description,250) %>
       <br>
       <br>
       Contributed by : <strong><%= blog.author %></strong> 
-      <hr>
     </div>
-    
+        <a href="/show/<%=blog._id%>" class="btn btn-info">Read More</a>
+    <br>
+    <hr>
+
   <% } %> 
 </div>
 

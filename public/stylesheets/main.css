@@ -1,12 +1,12 @@
 body {
-  background: cadetblue;
+  background-color: yellowgreen;
   padding : 10px;
   margin : 2px;
 }
 
 .form-inline {
   padding : 10px;
-  margin : 10px;
+  margin : 10px auto;
 }
 
 .alert, .alert-danger {
@@ -22,15 +22,17 @@ body {
   border-top : #83cd39 3px solid;
 }
 
+
 .blog-container {
-  width : 800px;
+  width : 1000px;
   border : 1px solid blue;
   margin : 20px auto ; 
   padding : 70px;
   border-top : yellowgreen 2px solid;
+  background-color: burlywood;
 }
 
-input[type="text"],textarea {
+input[type="text"] {
   padding : 3px;
   width : 50%;
   border : 1px #ccc solid;
@@ -48,3 +50,10 @@ input[type="text"],textarea {
   padding : 20px;
   border-top : #83cd39 3px solid;
 }
+textarea {
+  width : 100%;
+}
+li {
+  list-style: none;
+}
+

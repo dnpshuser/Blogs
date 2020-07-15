@@ -17,6 +17,7 @@ const registerRouter = require('./routes/register');
 const loginRouter = require('./routes/login');
 const addBlogRouter = require('./routes/add/blogRouter');
 const addCategoryRouter = require('./routes/add/categoryRouter');
+const showRouter = require('./routes/show');
 
 const Blog = require('./models/blog');
 const Category = require('./models/category');
@@ -53,6 +54,10 @@ app.use("*",async (req,res,next) => {
   }
   next();
 })
+app.locals.truncateText = function(text,length) {
+  return text.substring(text,length);
+}
+
 
 const checkAuthenticated = function(req,res,next) {
   if(req.isAuthenticated()) {
@@ -69,12 +74,13 @@ const checkNotAuthenticated = function(req,res,next) {
   }
   next();
 }
-
+app.use('/show', checkAuthenticated , showRouter);
 app.use('/add/blog',checkAuthenticated, addBlogRouter);
 app.use('/add/category',checkAuthenticated, addCategoryRouter);
 app.use('/register',checkNotAuthenticated, registerRouter);
 app.use('/login',checkNotAuthenticated, loginRouter);
 app.use('/',checkAuthenticated, indexRouter);
+
 
 const port = 3000;
 app.listen(port, () => {
