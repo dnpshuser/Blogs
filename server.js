@@ -18,6 +18,7 @@ const loginRouter = require('./routes/login');
 const addBlogRouter = require('./routes/add/blogRouter');
 const addCategoryRouter = require('./routes/add/categoryRouter');
 const showRouter = require('./routes/show');
+const editRouter = require('./routes/edit');
 
 const Blog = require('./models/blog');
 const Category = require('./models/category');
@@ -74,6 +75,7 @@ const checkNotAuthenticated = function(req,res,next) {
   }
   next();
 }
+app.use('/edit', checkAuthenticated , editRouter);
 app.use('/show', checkAuthenticated , showRouter);
 app.use('/add/blog',checkAuthenticated, addBlogRouter);
 app.use('/add/category',checkAuthenticated, addCategoryRouter);

@@ -7,12 +7,16 @@ router.get('/', (req,res) => {
 })
 
 router.post('/', async (req,res) => {
+  const category = await Category.findOne({name : req.body.category});
+  if(category) {
+    req.flash('error', 'This Category is already added. Try a different One...');
+    return res.redirect('/add/category');
+  }
   const newCategory = new Category({
     name : req.body.category
   })
   const result = await newCategory.save();
-  console.log(result);
-  res.redirect('/');
+  res.redirect('/add/category');
 })
 
 module.exports = router;

@@ -1,5 +1,4 @@
 body {
-  background-color: yellowgreen;
   padding : 10px;
   margin : 2px;
 }
@@ -20,6 +19,7 @@ body {
   margin : 20px auto ;
   padding : 20px;
   border-top : #83cd39 3px solid;
+  background-color: lightcyan;
 }
 
 
@@ -29,7 +29,7 @@ body {
   margin : 20px auto ; 
   padding : 70px;
   border-top : yellowgreen 2px solid;
-  background-color: burlywood;
+  background-color: lightcyan;
 }
 
 input[type="text"] {

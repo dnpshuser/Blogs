@@ -11,6 +11,15 @@
       <br>
       <br>
       Contributed by : <strong><%= blog.author %></strong> 
+      <div>
+        <% if (locals.user.username == blog.author) { %>
+          <form action="/edit/<%=blog._id%>" method="GET">
+            <button type="submit" class="btn btn-outline-info">Edit</button>
+          </form>
+        <% } %>
+      
+
+      </div>
     <br>
     <hr>
     <h1><u>Comments</u></h1>
@@ -26,7 +35,7 @@
     <h2>Add Comments</h2>
     <br>
     <form action="/show/comment/<%=blog._id%>" method="POST">
-        <input type="text" name="comment" id="comment" placeholder="Write your Comments">
+        <input type="text" name="comment" id="comment" placeholder="Write your Comments" required>
         <button class="btn btn-dark" type="submit">Send</button>
     </form>
 

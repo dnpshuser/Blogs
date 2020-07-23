@@ -15,7 +15,7 @@ router.post('/', upload.single('image'), async (req,res) => {
     category : req.body.category , 
     description : req.body.description, 
     image : req.file.filename , 
-    author : req.body.author
+    author : req.user.username
   });
 
   const result = await newBlog.save();
