@@ -1,5 +1,6 @@
-1 Used Environment Variables 
-i  : secret
-ii : NODE_ENV
+# Used Environment Variables 
+i   : secret
+ii  : NODE_ENV
+iii : provide a PORT (optional parameter, if not provided, the server will take the default PORT = 3000) 
 
-2 place your ckeditor in public folder
+## place your ckeditor in public folder
