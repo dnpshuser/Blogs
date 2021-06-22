@@ -21,7 +21,7 @@ router.put('/:id',upload.single('image'), async (req,res) => {
   blog.description = req.body.description;
   if(req.file) {
     blog.image = req.file.filename;
-  }
+  } 
   const result = await blog.save();
   // console.log(req.file);
   // console.log(result);

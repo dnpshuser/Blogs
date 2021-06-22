@@ -19,6 +19,6 @@ router.post('/comment/:id', async (req,res) => {
   // console.log(result);
   res.redirect(`/show/${req.params.id}`);
 })
-
+ 
 
 module.exports = router;

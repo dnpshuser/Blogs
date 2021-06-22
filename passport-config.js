@@ -5,7 +5,7 @@ const User = require('./models/user');
 function initialize(passport) {
   passport.use(new LocalStrategy(  async (username, password,done) => {
      const user = await User.findOne({username : username});
-     if(!user) {
+     if(!user) { 
        return done(null, false, {message : 'No user Found with that username'});
      } 
      try {

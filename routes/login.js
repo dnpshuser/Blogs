@@ -5,7 +5,7 @@ const LocalStrategy = require('passport-local').Strategy;
 const initializePassport = require('../passport-config');
 
 initializePassport(passport);
-
+ 
 
 router.get('/', (req,res) => {
   res.render('login', {title : 'Login'});
