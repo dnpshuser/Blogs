@@ -2,7 +2,8 @@
 <%- include('./infoMessages') %>
 
 <div class="blog-container" >
-  <% for(blog of locals.blogs) { %>
+  <% for(let i = locals.blogs.length - 1;i>=0;i--) { %>
+    <% let blog = locals.blogs[i]; %>
     <div>
       Title : <strong><%= blog.title %></strong>
       <br> 

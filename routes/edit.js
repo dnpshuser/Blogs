@@ -23,8 +23,8 @@ router.put('/:id',upload.single('image'), async (req,res) => {
     blog.image = req.file.filename;
   }
   const result = await blog.save();
-  console.log(req.file);
-  console.log(result);
+  // console.log(req.file);
+  // console.log(result);
   const comments = await Comment.find({blogId : req.params.id});
   res.render('show', {blog : blog , title : blog.title, comments : comments});
 });

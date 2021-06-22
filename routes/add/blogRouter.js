@@ -19,7 +19,7 @@ router.post('/', upload.single('image'), async (req,res) => {
   });
 
   const result = await newBlog.save();
-  console.log(result);
+  // console.log(result);
   res.redirect('/');
 })
 module.exports = router;

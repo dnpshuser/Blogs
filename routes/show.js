@@ -16,7 +16,7 @@ router.post('/comment/:id', async (req,res) => {
     writer : req.user.username
   });
   const result = await newComment.save();
-  console.log(result);
+  // console.log(result);
   res.redirect(`/show/${req.params.id}`);
 })
 
